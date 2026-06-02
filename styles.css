@@ -35,6 +35,11 @@ button {
   cursor: pointer;
 }
 
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
 .app-shell {
   display: grid;
   grid-template-columns: 256px 1fr;
@@ -767,6 +772,12 @@ textarea:focus {
   margin-bottom: 24px;
 }
 
+.resume-editor {
+  min-height: 128px;
+  background: transparent;
+  border-color: var(--line);
+}
+
 .resume-paper h3 {
   color: var(--green);
   border-bottom: 1px solid var(--line);
@@ -917,6 +928,34 @@ th {
   gap: 14px;
 }
 
+dialog {
+  width: min(560px, calc(100vw - 32px));
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--card);
+  box-shadow: var(--shadow);
+}
+
+dialog::backdrop {
+  background: rgba(23, 35, 29, 0.42);
+}
+
+.dialog-form {
+  display: grid;
+  gap: 14px;
+  padding: 24px;
+}
+
+select {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: #fffaf0;
+  color: var(--ink);
+  padding: 11px 12px;
+}
+
 @media (max-width: 1120px) {
   .app-shell {
     grid-template-columns: 1fr;
@@ -1005,5 +1044,11 @@ th {
   .resume-paper {
     box-shadow: none;
     border: 0;
+  }
+
+  .resume-editor {
+    min-height: 0;
+    border: 0;
+    resize: none;
   }
 }

@@ -43,9 +43,20 @@ The goal is not just to write a resume. The goal is to make every application an
 
 ## Current Status
 
-This repository currently contains a static HTML/CSS/JS product prototype plus product documents.
+This repository currently contains a browser-based local MVP plus product documents.
 
-It is not yet a production application. The next implementation step is to turn this prototype into a real web MVP with:
+The current version works without a build step and stores data in browser `localStorage`. It supports:
+
+- Editing profile information and skills
+- Adding and deleting evidence-backed project materials
+- Pasting old resume text and importing recognized skills
+- Pasting a JD and generating a local keyword-based fit analysis
+- Editing a tailored resume summary
+- Printing or exporting the resume as PDF
+- Adding and deleting application CRM records
+- Saving interview reviews and STAR story drafts
+
+It is not yet a production cloud application. The next implementation step is to turn this local MVP into a full web app with:
 
 - Next.js
 - Supabase or PostgreSQL
@@ -80,13 +91,16 @@ No build step is required for the current prototype.
 
 ## Roadmap
 
-- [x] Static product prototype
+- [x] Browser-based local MVP
 - [x] JD analysis flow
 - [x] Resume generation flow
 - [x] Evidence chain concept
 - [x] Application CRM concept
 - [x] Interview review feedback loop
 - [x] Big Tech mode concept
+- [x] Browser localStorage persistence
+- [x] Profile and project material CRUD
+- [x] Editable resume summary and print-to-PDF
 - [ ] Real profile CRUD
 - [ ] Resume PDF/Word import
 - [ ] OpenAI-powered JD parsing
