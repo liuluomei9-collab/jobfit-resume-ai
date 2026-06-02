@@ -1,0 +1,19 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#F5F1E8"/>
+  <rect x="72" y="64" width="1056" height="502" rx="16" fill="#FFFDF7" stroke="#DED6C7"/>
+  <rect x="104" y="100" width="156" height="40" rx="8" fill="#1F4D3A"/>
+  <text x="128" y="126" fill="#FFFAF0" font-family="Arial, sans-serif" font-size="20" font-weight="700">JobFit</text>
+  <text x="104" y="204" fill="#20201D" font-family="Arial, sans-serif" font-size="62" font-weight="800">AI Resume Workspace</text>
+  <text x="104" y="264" fill="#706A5F" font-family="Arial, sans-serif" font-size="28">JD-based resume tailoring, application CRM, and interview review feedback.</text>
+  <rect x="104" y="328" width="244" height="98" rx="12" fill="#DFE8D5"/>
+  <text x="128" y="366" fill="#1F4D3A" font-family="Arial, sans-serif" font-size="22" font-weight="700">JD Analysis</text>
+  <text x="128" y="396" fill="#1F4D3A" font-family="Arial, sans-serif" font-size="18">keywords, gaps, fit score</text>
+  <rect x="382" y="328" width="244" height="98" rx="12" fill="#F6DFD2"/>
+  <text x="406" y="366" fill="#8C341F" font-family="Arial, sans-serif" font-size="22" font-weight="700">Evidence Chain</text>
+  <text x="406" y="396" fill="#8C341F" font-family="Arial, sans-serif" font-size="18">truth-preserving AI</text>
+  <rect x="660" y="328" width="244" height="98" rx="12" fill="#F1E4C6"/>
+  <text x="684" y="366" fill="#7A5A19" font-family="Arial, sans-serif" font-size="22" font-weight="700">Interview Loop</text>
+  <text x="684" y="396" fill="#7A5A19" font-family="Arial, sans-serif" font-size="18">reviews improve resumes</text>
+  <rect x="104" y="466" width="800" height="2" fill="#1F4D3A"/>
+  <text x="104" y="516" fill="#20201D" font-family="Arial, sans-serif" font-size="24" font-weight="700">Make every application and interview improve the next one.</text>
+</svg>

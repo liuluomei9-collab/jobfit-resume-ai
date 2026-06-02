@@ -1,0 +1,453 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JobFit Resume AI</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="brand">
+          <span class="brand-mark">JF</span>
+          <div>
+            <strong>JobFit</strong>
+            <small>Resume AI</small>
+          </div>
+        </div>
+
+        <nav class="nav-list" aria-label="主导航">
+          <button class="nav-item active" data-view="dashboard">工作台</button>
+          <button class="nav-item" data-view="import">导入简历</button>
+          <button class="nav-item" data-view="profile">资料库</button>
+          <button class="nav-item" data-view="jd">JD 分析</button>
+          <button class="nav-item" data-view="resume">简历生成</button>
+          <button class="nav-item" data-view="bigtech">大厂模式</button>
+          <button class="nav-item" data-view="applications">投递看板</button>
+          <button class="nav-item" data-view="review">面试复盘</button>
+        </nav>
+
+        <div class="sidebar-note">
+          <span>本周目标</span>
+          <strong>完成 8 次高质量投递</strong>
+          <div class="mini-progress"><span style="width: 62%"></span></div>
+        </div>
+      </aside>
+
+      <main class="main">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">AI 求职工作台</p>
+            <h1>让每一次投递，都像为这个岗位认真准备过。</h1>
+          </div>
+          <div class="top-actions">
+            <button class="ghost-btn" id="loadSample">载入示例 JD</button>
+            <button class="ghost-btn" data-view-link="import">导入旧简历</button>
+            <button class="primary-btn" data-view-link="bigtech">大厂模式</button>
+          </div>
+        </header>
+
+        <section id="dashboard" class="view active">
+          <div class="workflow-strip">
+            <article class="active"><span>1</span><strong>导入资料</strong><small>旧简历 / 手动录入</small></article>
+            <article class="active"><span>2</span><strong>分析 JD</strong><small>关键词 / 缺口 / 匹配度</small></article>
+            <article><span>3</span><strong>生成简历</strong><small>事实依据 / PDF</small></article>
+            <article><span>4</span><strong>投递复盘</strong><small>CRM / 面试反哺</small></article>
+          </div>
+
+          <div class="metric-grid">
+            <article class="metric-card">
+              <span>本周投递</span>
+              <strong>5</strong>
+              <small>目标完成 62%</small>
+            </article>
+            <article class="metric-card">
+              <span>简历版本</span>
+              <strong>12</strong>
+              <small>平均匹配度 84%</small>
+            </article>
+            <article class="metric-card">
+              <span>面试安排</span>
+              <strong>3</strong>
+              <small>2 场待准备</small>
+            </article>
+            <article class="metric-card accent">
+              <span>下个动作</span>
+              <strong>复盘一面</strong>
+              <small>建议今天完成</small>
+            </article>
+          </div>
+
+          <div class="split-layout">
+            <section class="panel">
+              <div class="panel-head">
+                <h2>最近岗位</h2>
+                <button class="text-btn" data-view-link="applications">查看全部</button>
+              </div>
+              <div class="job-list">
+                <article>
+                  <div>
+                    <strong>AI 产品经理</strong>
+                    <span>云杉智能 · 匹配度 89%</span>
+                  </div>
+                  <mark>一面</mark>
+                </article>
+                <article>
+                  <div>
+                    <strong>B 端增长运营</strong>
+                    <span>北辰科技 · 匹配度 82%</span>
+                  </div>
+                  <mark>已投递</mark>
+                </article>
+                <article>
+                  <div>
+                    <strong>数据产品经理</strong>
+                    <span>明川数据 · 匹配度 86%</span>
+                  </div>
+                  <mark>待投递</mark>
+                </article>
+              </div>
+            </section>
+
+            <section class="panel dark-panel">
+              <p class="eyebrow">今日建议</p>
+              <h2>把“项目推进”改成可验证成果</h2>
+              <p>你最近 3 个目标岗位都强调跨部门协作。建议在简历中补充协作对象、周期、结果指标，让表达更像真实项目交付。</p>
+              <button class="light-btn" data-view-link="resume">优化简历</button>
+            </section>
+          </div>
+
+          <div class="insight-strip">
+            <article>
+              <span>资料完整度</span>
+              <strong>76%</strong>
+              <p>缺少 AI 产品指标和英文版项目描述。</p>
+            </article>
+            <article>
+              <span>事实依据覆盖</span>
+              <strong>91%</strong>
+              <p>12 条简历表达中 11 条可追溯到资料库。</p>
+            </article>
+            <article>
+              <span>复盘反哺</span>
+              <strong>3 条</strong>
+              <p>本周新增 3 条面试改进建议。</p>
+            </article>
+          </div>
+
+          <section class="panel action-panel">
+            <div class="panel-head">
+              <h2>下一步行动</h2>
+              <button class="text-btn" data-view-link="jd">继续优化</button>
+            </div>
+            <div class="action-list">
+              <label><input type="checkbox" checked /> 已导入旧简历并生成资料库草稿</label>
+              <label><input type="checkbox" /> 补充智能客服项目的知识命中率和人工接管率</label>
+              <label><input type="checkbox" /> 为“云杉智能 AI 产品经理”导出 PDF 简历</label>
+              <label><input type="checkbox" /> 面试后回写 1 条 STAR 回答素材</label>
+            </div>
+          </section>
+        </section>
+
+        <section id="import" class="view">
+          <div class="import-layout">
+            <section class="panel import-drop">
+              <p class="eyebrow">Resume Import</p>
+              <h2>从旧简历开始，不从空表开始</h2>
+              <p>上传或粘贴旧简历内容，系统会拆成基础信息、工作经历、项目经历、技能和成果指标。当前原型先模拟解析流程。</p>
+              <div class="drop-zone">
+                <strong>拖入 PDF / Word 简历</strong>
+                <span>或点击选择文件，支持后续接入解析服务</span>
+                <input id="resumeFile" type="file" accept=".pdf,.doc,.docx,.txt" />
+              </div>
+              <label>也可以粘贴旧简历文本<textarea id="oldResumeText" placeholder="粘贴你的旧简历内容，点击解析后生成资料库草稿。"></textarea></label>
+              <button class="primary-btn" id="parseResumeBtn">解析为资料库草稿</button>
+            </section>
+            <section class="panel">
+              <p class="eyebrow">解析结果</p>
+              <h2 id="importTitle">等待导入</h2>
+              <div id="importResult" class="analysis-empty">导入后，这里会显示自动识别出的经历、技能、量化成果和需要你确认的模糊信息。</div>
+            </section>
+          </div>
+        </section>
+
+        <section id="profile" class="view">
+          <div class="section-title">
+            <p class="eyebrow">Profile Library</p>
+            <h2>职业资料库</h2>
+          </div>
+          <div class="profile-grid">
+            <article class="panel">
+              <h3>基础信息</h3>
+              <div class="field-grid">
+                <label>姓名<input value="李明" /></label>
+                <label>城市<input value="上海" /></label>
+                <label>方向<input value="AI 产品经理 / B 端产品" /></label>
+                <label>经验<input value="5 年" /></label>
+              </div>
+            </article>
+            <article class="panel">
+              <h3>核心技能</h3>
+              <div class="tag-cloud">
+                <span>需求分析</span><span>SaaS</span><span>AI 产品</span><span>数据分析</span><span>用户研究</span><span>项目管理</span>
+              </div>
+            </article>
+            <article class="panel wide">
+              <div class="panel-head">
+                <h3>项目素材</h3>
+                <span class="trust-pill">事实库</span>
+              </div>
+              <div class="experience-card">
+                <strong>智能客服知识库搭建</strong>
+                <p>负责从 0 到 1 搭建客服知识库和问答配置后台，协同算法、客服和运营团队完成上线，使人工客服重复咨询量下降 28%。</p>
+                <div class="tag-cloud"><span>AI</span><span>B 端</span><span>流程优化</span><span>28%</span></div>
+                <small class="source-note">依据：2024 Q3 项目复盘、客服工单统计</small>
+              </div>
+              <div class="experience-card">
+                <strong>销售线索管理系统</strong>
+                <p>重构线索分配和跟进流程，统一销售阶段定义，让销售主管可以实时查看线索转化漏斗。</p>
+                <div class="tag-cloud"><span>CRM</span><span>数据看板</span><span>跨部门协作</span></div>
+                <small class="source-note">依据：销售 CRM 需求文档、上线验收记录</small>
+              </div>
+              <div class="experience-card warning-card" id="profileBacklog">
+                <strong>待补充证据</strong>
+                <p>面试复盘提示：需要补充“模型效果评估”的真实指标，例如知识命中率、人工接管率、准确率。</p>
+                <div class="tag-cloud"><span>待确认</span><span>AI 指标</span><span>复盘反哺</span></div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section id="jd" class="view">
+          <div class="workspace-grid">
+            <section class="panel input-panel">
+              <div class="panel-head">
+                <h2>粘贴岗位 JD</h2>
+                <button class="primary-btn" id="analyzeBtn">分析岗位</button>
+              </div>
+              <textarea id="jdInput" placeholder="把目标岗位 JD 粘贴到这里，系统会提取职责、要求、关键词和匹配建议。"></textarea>
+            </section>
+            <section class="panel result-panel">
+              <p class="eyebrow">岗位画像</p>
+              <h2 id="roleTitle">等待分析</h2>
+              <div class="score-ring">
+                <strong id="score">--</strong>
+                <span>匹配度</span>
+              </div>
+              <div class="match-breakdown">
+                <div><span>技能</span><strong id="skillScore">--</strong></div>
+                <div><span>项目</span><strong id="projectScore">--</strong></div>
+                <div><span>证据</span><strong id="evidenceScore">--</strong></div>
+              </div>
+              <div id="analysisResult" class="analysis-empty">粘贴 JD 后，这里会显示核心能力、关键词、加分项和简历优化建议。</div>
+            </section>
+          </div>
+          <div class="research-grid">
+            <section class="panel">
+              <p class="eyebrow">Company Research</p>
+              <h2>公司研究卡</h2>
+              <div class="research-card">
+                <strong>云杉智能</strong>
+                <p>AI SaaS 公司，核心场景集中在智能客服、知识库和企业内部效率工具。简历应突出 B 端落地、跨部门协作和上线后指标。</p>
+                <div class="tag-cloud"><span>AI SaaS</span><span>知识库</span><span>效率工具</span><span>数据指标</span></div>
+              </div>
+            </section>
+            <section class="panel">
+              <p class="eyebrow">Success Profile</p>
+              <h2>岗位成功画像</h2>
+              <ul class="check-list">
+                <li>能把业务问题拆成可交付产品方案</li>
+                <li>能和算法、研发、客服、运营协同推进</li>
+                <li>能用知识命中率、接管率、重复咨询下降等指标说清效果</li>
+                <li>能解释 AI 产品的不确定性和上线后的迭代机制</li>
+              </ul>
+            </section>
+          </div>
+        </section>
+
+        <section id="resume" class="view">
+          <div class="resume-layout">
+            <aside class="resume-nav panel">
+              <button class="active">个人简介</button>
+              <button>技能摘要</button>
+              <button>项目经历</button>
+              <button>工作经历</button>
+              <button>教育经历</button>
+            </aside>
+            <article class="resume-paper" id="resumePaper">
+              <div class="resume-head">
+                <div>
+                  <h2>李明</h2>
+                  <p>AI 产品经理 / B 端产品经理 · 上海</p>
+                </div>
+                <span>jobfit.ai/li-ming</span>
+              </div>
+              <section>
+                <h3>个人简介</h3>
+                <p id="summaryText">5 年 B 端产品经验，熟悉 SaaS、CRM 和智能客服场景，擅长将业务流程抽象为系统能力，并通过数据指标验证产品效果。</p>
+              </section>
+              <section>
+                <h3>重点项目</h3>
+                <p><strong>智能客服知识库搭建：</strong>负责从需求调研、知识结构设计到配置后台上线，协同算法和客服团队落地，重复咨询量下降 28%。</p>
+                <p><strong>销售线索管理系统：</strong>重构线索分配、跟进和转化统计流程，提升销售主管对商机状态的掌控效率。</p>
+              </section>
+              <section>
+                <h3>技能</h3>
+                <p>需求分析、用户研究、数据分析、SaaS 产品设计、AI 应用落地、跨部门项目推进。</p>
+              </section>
+            </article>
+            <aside class="panel ai-panel">
+              <h3>AI 建议</h3>
+              <p>当前版本适合 AI 产品经理岗位。建议继续补充“模型效果评估”和“上线后运营指标”。</p>
+              <div class="keyword-list">
+                <span>AI 产品</span><span>B 端</span><span>数据分析</span><span>项目推进</span>
+              </div>
+              <div class="evidence-box">
+                <strong>事实依据</strong>
+                <p>“重复咨询量下降 28%”来自资料库项目：智能客服知识库搭建。</p>
+                <p>“销售线索系统”来自资料库项目：销售线索管理系统。</p>
+                <p class="risk-text">未写入：知识命中率。原因：资料库暂无原始数据。</p>
+              </div>
+              <div class="export-checklist">
+                <strong>导出前检查</strong>
+                <label><input type="checkbox" checked /> 关键指标有资料来源</label>
+                <label><input type="checkbox" checked /> 无编造公司/职位/项目</label>
+                <label><input type="checkbox" /> 待确认指标已处理</label>
+              </div>
+              <button class="primary-btn" id="exportBtn">导出 PDF</button>
+              <button class="ghost-btn" id="optimizeBtn">重新优化简介</button>
+            </aside>
+          </div>
+        </section>
+
+        <section id="bigtech" class="view">
+          <div class="section-title">
+            <p class="eyebrow">Big Tech Mode</p>
+            <h2>大厂模式</h2>
+          </div>
+          <div class="bigtech-grid">
+            <section class="panel mode-card active-mode">
+              <div class="panel-head">
+                <h3>大厂 ATS 简洁版</h3>
+                <span class="trust-pill">推荐</span>
+              </div>
+              <p>单栏、少装饰、强结构，适合大厂 ATS 和 HR 快速扫描。强调成果、技术栈、复杂度和影响指标。</p>
+              <button class="primary-btn" id="applyBigTechMode">应用到当前简历</button>
+            </section>
+            <section class="panel mode-card">
+              <h3>外企英文版</h3>
+              <p>面向英文 JD 和跨国公司，突出 ownership、stakeholder management、impact metrics 和 concise writing。</p>
+              <button class="ghost-btn">准备中</button>
+            </section>
+            <section class="panel mode-card">
+              <h3>技术岗深挖版</h3>
+              <p>自动列出简历项目中可能被追问的系统设计、数据结构、工程权衡和性能优化问题。</p>
+              <button class="ghost-btn">准备中</button>
+            </section>
+          </div>
+
+          <div class="split-layout">
+            <section class="panel">
+              <p class="eyebrow">Batch JD</p>
+              <h2>批量岗位分析</h2>
+              <div class="batch-list">
+                <article><strong>共同要求</strong><span>AI 产品落地、数据分析、跨部门推进、B 端经验</span></article>
+                <article><strong>差异关键词</strong><span>智能客服强调知识库；数据产品强调指标体系；增长岗位强调转化漏斗</span></article>
+                <article><strong>共用底稿</strong><span>以智能客服知识库项目为主线，按岗位替换第二项目和技能摘要</span></article>
+              </div>
+            </section>
+            <section class="panel dark-panel">
+              <p class="eyebrow">Experience Discovery</p>
+              <h2>经验发现问题</h2>
+              <p>系统会根据 JD 缺口主动追问：有没有上线后指标？有没有跨部门阻力？有没有失败后迭代？有没有降本提效证据？</p>
+              <button class="light-btn" data-view-link="profile">补充资料库</button>
+            </section>
+          </div>
+        </section>
+
+        <section id="applications" class="view">
+          <div class="section-title">
+            <p class="eyebrow">Pipeline</p>
+            <h2>投递看板</h2>
+          </div>
+          <div class="kanban">
+            <div class="lane"><h3>待投递</h3><article><strong>明川数据 · 数据产品经理</strong><span>待导出 PDF</span><small>简历：数据产品 v2</small></article></div>
+            <div class="lane"><h3>已投递</h3><article><strong>北辰科技 · 增长运营</strong><span>等待 HR 回复</span><small>渠道：Boss 直聘</small></article></div>
+            <div class="lane"><h3>面试中</h3><article><strong>云杉智能 · AI 产品经理</strong><span>明天 14:00 一面</span><small>准备：AI 指标追问</small></article></div>
+            <div class="lane"><h3>Offer</h3><article><strong>星河软件 · SaaS PM</strong><span>薪资沟通中</span><small>版本：SaaS PM v3</small></article></div>
+          </div>
+          <section class="panel crm-table">
+            <div class="panel-head">
+              <h3>求职 CRM 明细</h3>
+              <button class="ghost-btn" id="addApplicationBtn">添加投递记录</button>
+            </div>
+            <table>
+              <thead><tr><th>公司</th><th>岗位</th><th>状态</th><th>渠道</th><th>简历版本</th><th>下一步</th></tr></thead>
+              <tbody id="applicationRows">
+                <tr><td>云杉智能</td><td>AI 产品经理</td><td>面试中</td><td>内推</td><td>AI PM v4</td><td>一面复盘</td></tr>
+                <tr><td>北辰科技</td><td>增长运营</td><td>已投递</td><td>Boss</td><td>增长运营 v1</td><td>3 天后跟进</td></tr>
+                <tr><td>明川数据</td><td>数据产品经理</td><td>待投递</td><td>官网</td><td>数据产品 v2</td><td>导出 PDF</td></tr>
+              </tbody>
+            </table>
+          </section>
+        </section>
+
+        <section id="review" class="view">
+          <div class="review-grid">
+            <section class="panel">
+              <h2>面试复盘</h2>
+              <label>面试岗位<input value="云杉智能 · AI 产品经理 一面" /></label>
+              <label>被问到的问题<textarea>你在智能客服项目里如何判断知识库效果？跨部门推进时最大的阻力是什么？</textarea></label>
+              <label>卡住的问题<textarea>模型效果指标回答不够具体，对召回率、准确率和人工接管率的关系解释不够清楚。</textarea></label>
+              <button class="primary-btn" id="reviewBtn">生成复盘建议</button>
+            </section>
+            <section class="panel dark-panel" id="reviewOutput">
+              <p class="eyebrow">AI 复盘</p>
+              <h2>等待生成</h2>
+              <p>记录面试问题后，系统会帮你提炼表现、短板和下一次准备重点。</p>
+            </section>
+          </div>
+          <section class="panel star-panel">
+            <div class="panel-head">
+              <div>
+                <p class="eyebrow">STAR Library</p>
+                <h3>大厂行为面试 STAR 案例库</h3>
+              </div>
+              <button class="ghost-btn" id="addStarBtn">生成 STAR 案例</button>
+            </div>
+            <div class="star-grid" id="starGrid">
+              <article>
+                <strong>Deliver Results</strong>
+                <p>用“智能客服知识库搭建”讲清如何从重复咨询高的问题出发，推动上线并让重复咨询量下降 28%。</p>
+                <span>证据强度：强</span>
+              </article>
+              <article>
+                <strong>Dive Deep</strong>
+                <p>准备解释知识命中率、人工接管率和重复咨询下降之间的关系，避免只说结果不说机制。</p>
+                <span>证据强度：待补充</span>
+              </article>
+              <article>
+                <strong>Earn Trust</strong>
+                <p>用跨部门协作案例说明如何协调算法、客服、运营团队处理上线后的反馈分歧。</p>
+                <span>证据强度：中</span>
+              </article>
+            </div>
+          </section>
+          <section class="panel action-panel">
+            <div class="panel-head">
+              <h3>复盘回写队列</h3>
+              <button class="ghost-btn" data-view-link="profile">查看资料库</button>
+            </div>
+            <div class="action-list" id="reviewBacklog">
+              <label><input type="checkbox" /> 补充“知识命中率”的真实来源</label>
+              <label><input type="checkbox" /> 沉淀“跨部门阻力如何解决”的 STAR 回答</label>
+            </div>
+          </section>
+        </section>
+      </main>
+    </div>
+
+    <script src="./script.js"></script>
+  </body>
+</html>

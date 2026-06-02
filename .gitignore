@@ -1,0 +1,24 @@
+# Archives and generated packages
+*.zip
+
+# Local previews / scratch
+preview-v01/
+restore-v02/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Future app dependencies
+node_modules/
+.next/
+dist/
+build/
+
+# Environment variables
+.env
+.env.*
+
