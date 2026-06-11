@@ -813,6 +813,41 @@ textarea:focus {
   color: var(--muted);
 }
 
+.version-box {
+  display: grid;
+  gap: 12px;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fffaf0;
+}
+
+.version-list {
+  display: grid;
+  gap: 8px;
+}
+
+.version-list article {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 10px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--card);
+}
+
+.version-list strong,
+.version-list small {
+  display: block;
+}
+
+.version-list small {
+  margin-top: 4px;
+  color: var(--muted);
+}
+
 .evidence-box p {
   margin-bottom: 8px;
   color: var(--muted);

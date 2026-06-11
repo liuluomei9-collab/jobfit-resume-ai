@@ -14,26 +14,28 @@ Most resume tools generate a resume once. JobFit Resume AI is designed around a 
 2. Paste a target job description.
 3. Analyze the role, company context, gaps, and keywords.
 4. Generate a tailored resume with evidence tracking.
-5. Export a PDF and save the application record.
-6. Review interviews and feed learnings back into the profile.
+5. Save role-specific resume versions and export PDF.
+6. Track applications in a job-search CRM.
+7. Review interviews and feed learnings back into the profile.
 
 The goal is not just to write a resume. The goal is to make every application and interview improve the next one.
 
 ## Core Features
 
-- **Resume import**: Upload or paste an old resume and convert it into structured profile drafts.
-- **JD analysis**: Extract role requirements, keywords, success profile, and gaps.
-- **Tailored resume generation**: Generate a resume version based on the target JD.
+- **Resume import**: Paste an old resume and convert recognized skills into profile drafts.
+- **Career profile library**: Edit profile information, skills, and evidence-backed project materials.
+- **JD analysis**: Extract local keyword matches, gaps, fit score, company context, and success profile.
+- **Tailored resume generation**: Generate and edit a resume summary based on the target JD.
+- **Resume versioning**: Save, load, and delete role-specific resume versions.
 - **Evidence chain**: Track which resume claims come from which profile evidence.
-- **PDF export**: Export the generated resume as a printable PDF.
+- **PDF export**: Print or export the generated resume as PDF through the browser.
 - **Application CRM**: Track companies, roles, channels, resume versions, and next steps.
 - **Interview review**: Record interview questions, weak spots, and improvement actions.
-- **Review feedback loop**: Turn interview reviews into profile backlog and resume improvements.
-- **Big Tech mode**: ATS-friendly template, company research card, success profile, batch JD analysis, and STAR behavioral interview library.
+- **STAR library**: Save behavioral interview stories and Big Tech preparation notes.
 
 ## What Makes It Different
 
-普通 AI 简历工具通常只做“生成简历”。JobFit 更强调求职闭环：
+普通 AI 简历工具通常只做“生成简历”。JobFit 更强调完整求职闭环：
 
 - **Truth-preserving generation**: AI should not invent companies, projects, dates, or metrics.
 - **Evidence-first resume writing**: Important claims need traceable sources.
@@ -52,6 +54,7 @@ The current version works without a build step and stores data in browser `local
 - Pasting old resume text and importing recognized skills
 - Pasting a JD and generating a local keyword-based fit analysis
 - Editing a tailored resume summary
+- Saving and loading resume versions
 - Printing or exporting the resume as PDF
 - Adding and deleting application CRM records
 - Saving interview reviews and STAR story drafts
@@ -78,9 +81,9 @@ No build step is required for the current prototype.
 
 ```text
 .
-├── index.html              # Interactive static prototype
+├── index.html              # Interactive static MVP
 ├── styles.css              # UI styles
-├── script.js               # Prototype interactions
+├── script.js               # Local MVP interactions
 ├── PRD.md                  # Product requirements document
 ├── PROJECT_PLAN.md         # Roadmap and implementation plan
 ├── TECH_SPEC.md            # Technical implementation notes
@@ -101,10 +104,10 @@ No build step is required for the current prototype.
 - [x] Browser localStorage persistence
 - [x] Profile and project material CRUD
 - [x] Editable resume summary and print-to-PDF
-- [ ] Real profile CRUD
+- [x] Resume version management
 - [ ] Resume PDF/Word import
 - [ ] OpenAI-powered JD parsing
-- [ ] Real resume editor
+- [ ] Rich resume editor
 - [ ] Playwright PDF export service
 - [ ] User accounts and data persistence
 - [ ] Public personal website generation

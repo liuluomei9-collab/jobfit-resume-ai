@@ -54,7 +54,7 @@
             <article class="metric-card"><span>投递记录</span><strong id="metricApplications">0</strong><small>持续跟进岗位进度</small></article>
             <article class="metric-card"><span>项目素材</span><strong id="metricExperiences">0</strong><small>可复用的事实依据</small></article>
             <article class="metric-card"><span>面试复盘</span><strong id="metricReviews">0</strong><small>沉淀下一次改进</small></article>
-            <article class="metric-card accent"><span>最近匹配度</span><strong id="metricScore">--</strong><small>来自最新 JD 分析</small></article>
+            <article class="metric-card accent"><span>简历版本</span><strong id="metricVersions">0</strong><small>按岗位保存不同版本</small></article>
           </div>
           <div class="split-layout">
             <section class="panel">
@@ -153,6 +153,14 @@
               <h3>事实依据与导出</h3>
               <p>简历只使用资料库中保存的经历。没有依据的指标会进入待补充清单。</p>
               <div class="evidence-box" id="evidenceBox"></div>
+              <div class="version-box">
+                <div class="panel-head">
+                  <strong>版本管理</strong>
+                  <button class="text-btn" id="saveVersionBtn">保存版本</button>
+                </div>
+                <label>版本名称<input id="versionName" placeholder="例如：云杉智能 AI 产品经理 v1" /></label>
+                <div class="version-list" id="versionList"></div>
+              </div>
               <div class="export-checklist">
                 <strong>导出前检查</strong>
                 <label><input type="checkbox" checked /> 关键经历来自资料库</label>

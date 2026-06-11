@@ -13,3 +13,9 @@
 - Added interview review history and STAR story drafts.
 - Kept Big Tech mode as a working local flow.
 
+## v0.7 Resume Versions
+
+- Added resume version management.
+- Added version count to the dashboard.
+- Added save, load, and delete actions for role-specific resume versions.
+- Cleaned up README content for GitHub display.

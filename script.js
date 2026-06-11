@@ -18,6 +18,7 @@ const defaultState = {
     { id: "app-1", company: "云杉智能", role: "AI 产品经理", status: "面试中", channel: "内推", version: "AI PM v1", next: "准备一面" }
   ],
   reviews: [],
+  resumeVersions: [],
   stars: [
     { principle: "Deliver Results", text: "用智能客服知识库项目讲清如何推动上线，并让重复咨询量下降 28%。", strength: "强" },
     { principle: "Dive Deep", text: "准备解释知识命中率、人工接管率和重复咨询下降之间的关系。", strength: "待补充" }
@@ -45,24 +46,24 @@ const byId = (id) => document.getElementById(id);
 const [
   profileName, profileCity, profileTarget, profileYears, profileSkills, skillTags,
   experienceList, resumeName, resumeMeta, summaryText, resumeSkills, resumeExperiences,
-  evidenceBox, applicationRows, reviewHistory, starGrid, roleTitle, score, skillScore,
+  evidenceBox, versionName, versionList, applicationRows, reviewHistory, starGrid, roleTitle, score, skillScore,
   projectScore, evidenceScore, analysisResult, companyResearch, successProfile, loadSample,
   jdInput, resumeFile, fileName, oldResumeText, importTitle, importResult, parseResumeBtn,
   saveProfileBtn, addExperienceBtn, experienceDialog, experienceTitle, experienceDescription,
   experienceEvidence, experienceTags, experienceForm, confirmExperienceBtn, analyzeBtn,
-  saveResumeBtn, exportBtn, applyBigTechMode, applicationDialog, addApplicationBtn,
+  saveResumeBtn, saveVersionBtn, exportBtn, applyBigTechMode, applicationDialog, addApplicationBtn,
   applicationCompany, applicationRole, applicationStatus, applicationChannel, applicationNext,
   applicationForm, confirmApplicationBtn, reviewRole, reviewQuestions, reviewGaps, reviewOutput,
   reviewBtn, addStarBtn
 ] = [
   "profileName", "profileCity", "profileTarget", "profileYears", "profileSkills", "skillTags",
   "experienceList", "resumeName", "resumeMeta", "summaryText", "resumeSkills", "resumeExperiences",
-  "evidenceBox", "applicationRows", "reviewHistory", "starGrid", "roleTitle", "score", "skillScore",
+  "evidenceBox", "versionName", "versionList", "applicationRows", "reviewHistory", "starGrid", "roleTitle", "score", "skillScore",
   "projectScore", "evidenceScore", "analysisResult", "companyResearch", "successProfile", "loadSample",
   "jdInput", "resumeFile", "fileName", "oldResumeText", "importTitle", "importResult", "parseResumeBtn",
   "saveProfileBtn", "addExperienceBtn", "experienceDialog", "experienceTitle", "experienceDescription",
   "experienceEvidence", "experienceTags", "experienceForm", "confirmExperienceBtn", "analyzeBtn",
-  "saveResumeBtn", "exportBtn", "applyBigTechMode", "applicationDialog", "addApplicationBtn",
+  "saveResumeBtn", "saveVersionBtn", "exportBtn", "applyBigTechMode", "applicationDialog", "addApplicationBtn",
   "applicationCompany", "applicationRole", "applicationStatus", "applicationChannel", "applicationNext",
   "applicationForm", "confirmApplicationBtn", "reviewRole", "reviewQuestions", "reviewGaps", "reviewOutput",
   "reviewBtn", "addStarBtn"
@@ -92,6 +93,7 @@ function renderAll() {
   renderMetrics();
   renderProfile();
   renderResume();
+  renderVersions();
   renderApplications();
   renderReviews();
   renderStars();
@@ -101,7 +103,7 @@ function renderMetrics() {
   document.getElementById("metricApplications").textContent = state.applications.length;
   document.getElementById("metricExperiences").textContent = state.experiences.length;
   document.getElementById("metricReviews").textContent = state.reviews.length;
-  document.getElementById("metricScore").textContent = state.lastAnalysis ? `${state.lastAnalysis.score}%` : "--";
+  document.getElementById("metricVersions").textContent = state.resumeVersions.length;
   const list = document.getElementById("recentJobs");
   list.innerHTML = state.applications.slice(0, 4).map((item) => `<article><div><strong>${esc(item.role)}</strong><span>${esc(item.company)} · ${esc(item.next || "等待下一步")}</span></div><mark>${esc(item.status)}</mark></article>`).join("") || `<p class="analysis-empty">还没有投递记录。分析一个 JD 后开始创建。</p>`;
 }
@@ -118,6 +120,20 @@ function renderResume() {
   resumeSkills.textContent = state.profile.skills.join("、");
   resumeExperiences.innerHTML = state.experiences.map((item) => `<p><strong>${esc(item.title)}：</strong>${esc(item.description)}</p>`).join("");
   evidenceBox.innerHTML = state.experiences.map((item) => `<p><strong>${esc(item.title)}</strong><br />${esc(item.evidence || "待补充事实依据")}</p>`).join("");
+}
+function renderVersions() {
+  versionList.innerHTML = state.resumeVersions.map((item) => `<article><div><strong>${esc(item.name)}</strong><small>${esc(item.createdAt)}</small></div><div class="top-actions"><button class="text-btn" data-load-version="${esc(item.id)}">加载</button><button class="text-btn" data-delete-version="${esc(item.id)}">删除</button></div></article>`).join("") || `<p class="analysis-empty">还没有保存的简历版本。</p>`;
+  document.querySelectorAll("[data-load-version]").forEach((button) => button.addEventListener("click", () => {
+    const version = state.resumeVersions.find((item) => item.id === button.dataset.loadVersion);
+    if (!version) return;
+    state.profile.summary = version.summary;
+    saveState();
+    activateView("resume");
+  }));
+  document.querySelectorAll("[data-delete-version]").forEach((button) => button.addEventListener("click", () => {
+    state.resumeVersions = state.resumeVersions.filter((item) => item.id !== button.dataset.deleteVersion);
+    saveState();
+  }));
 }
 function renderApplications() {
   applicationRows.innerHTML = state.applications.map((item) => `<tr><td>${esc(item.company)}</td><td>${esc(item.role)}</td><td>${esc(item.status)}</td><td>${esc(item.channel)}</td><td>${esc(item.version)}</td><td>${esc(item.next)}</td><td><button class="text-btn" data-delete-app="${esc(item.id)}">删除</button></td></tr>`).join("");
@@ -164,6 +180,22 @@ addExperienceBtn.addEventListener("click", () => experienceDialog.showModal());
 confirmExperienceBtn.addEventListener("click", (event) => { event.preventDefault(); if (!experienceTitle.value.trim() || !experienceDescription.value.trim()) return; state.experiences.unshift({ id: crypto.randomUUID(), title: experienceTitle.value.trim(), description: experienceDescription.value.trim(), evidence: experienceEvidence.value.trim(), tags: splitTags(experienceTags.value) }); experienceForm.reset(); experienceDialog.close(); saveState(); });
 analyzeBtn.addEventListener("click", () => { if (!jdInput.value.trim()) { analysisResult.textContent = "请先粘贴岗位 JD。"; return; } state.lastAnalysis = analyzeJd(jdInput.value); saveState(); });
 saveResumeBtn.addEventListener("click", () => { state.profile.summary = summaryText.value.trim(); saveState(); });
+saveVersionBtn.addEventListener("click", () => {
+  state.profile.summary = summaryText.value.trim();
+  const role = state.lastAnalysis?.role || state.profile.target || "定制简历";
+  state.resumeVersions.unshift({
+    id: crypto.randomUUID(),
+    name: versionName.value.trim() || `${role} ${state.resumeVersions.length + 1}`,
+    summary: state.profile.summary,
+    skills: [...state.profile.skills],
+    experienceIds: state.experiences.map((item) => item.id),
+    sourceRole: state.lastAnalysis?.role || "",
+    matchScore: state.lastAnalysis?.score || null,
+    createdAt: new Date().toLocaleString("zh-CN", { month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit" })
+  });
+  versionName.value = "";
+  saveState();
+});
 exportBtn.addEventListener("click", () => window.print());
 applyBigTechMode.addEventListener("click", () => { state.profile.summary = `${state.profile.years} ${state.profile.target}经验，擅长将复杂业务问题拆解为可交付方案，并通过可验证指标持续迭代。代表项目：${state.experiences[0]?.title || "待补充项目"}。`; saveState(); activateView("resume"); });
 addApplicationBtn.addEventListener("click", () => applicationDialog.showModal());
